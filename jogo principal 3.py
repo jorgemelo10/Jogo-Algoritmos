@@ -5,15 +5,16 @@ class Personagem:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.larg = 15
-        self.alt = 15
+        self.larg = 16
+        self.alt = 16
         self.cor = 4
+        pyxel.images[1].load(0, 0, "nave_16x16.png")
     def move(self, dx, dy):
         velocidade = 3
         self.x = self.x + dx * velocidade
         self.y = self.y + dy * velocidade
     def desenha(self):
-        pyxel.rect(self.x, self.y, self.larg, self.alt, self.cor)
+        pyxel.blt(self.x, self.y, 1 , 0, 0, self.larg,self.alt)
 
 
 class Inimigo:
@@ -55,6 +56,7 @@ class Cenario:
 class Jogo:
     def __init__(self):
         pyxel.init(256, 256, title="Jogo")
+        pyxel.images[0].load(0, 0, "espaço.jpg")
         self.cenario = Cenario()
         pyxel.run(self.update, self.draw)
 
@@ -87,6 +89,7 @@ class Jogo:
 
     def draw(self):
         pyxel.cls(0)
+        pyxel.blt(0,0,0,0,0,256,256)
         self.cenario.p.desenha()
         self.cenario.i.desenha()
         for tiro in self.cenario.tiros:
