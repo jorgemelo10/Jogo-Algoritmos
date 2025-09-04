@@ -7,7 +7,6 @@ class Personagem:
         self.y = y
         self.larg = 16
         self.alt = 16
-        self.cor = 4
         pyxel.images[1].load(0, 0, "nave_16x16.png")
     def move(self, dx, dy):
         velocidade = 3
@@ -20,15 +19,15 @@ class Personagem:
 class Inimigo:
     def __init__(self):
         self.x = random.randint(0, 256)
+        pyxel.images[2].load(0, 0, "ufo_enemy_16x16.png")
         self.y = 0
-        self.larg = 10
-        self.alt = 10
-        self.cor = 6
+        self.larg = 16
+        self.alt = 16
     def move(self):
         velocidade = 2
         self.y = self.y + 1 * velocidade
     def desenha(self):
-        pyxel.rect(self.x, self.y, self.larg, self.alt, self.cor)
+        pyxel.blt(self.x, self.y, 2 , 0, 0, self.larg,self.alt)
 
 
 class Tiro:
